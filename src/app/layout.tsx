@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sixtyfour.variable} ${orbitron.variable} antialiased`}
+        className={`${sixtyfour.variable} ${orbitron.variable} ${geistMono.variable} ${geistSans.variable} antialiased`}
       >
         {children}
       </body>
