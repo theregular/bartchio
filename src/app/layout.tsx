@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Sixtyfour, Orbitron } from "next/font/google";
 import "./globals.css";
+import { Navigation } from "./components/Navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,30 @@ export default function RootLayout({
       <body
         className={`${sixtyfour.variable} ${orbitron.variable} ${geistMono.variable} ${geistSans.variable} antialiased`}
       >
-        {children}
+        <div className="relative h-screen w-full bg-background text-foreground overflow-hidden">
+          {/* Noise grain */}
+          <div className="fuzzy-overlay1 pointer-events-none hidden sm:block" />
+          <div className="fuzzy-overlay2 pointer-events-none hidden sm:block" />
+
+          {/* Scanline overlay */}
+          <div className="absolute inset-0 z-10 crt-scanline-overlay pointer-events-none"></div>
+
+          {/* Glitch copy */}
+          {/* <div
+                className="absolute inset-0 z-30 flex items-center justify-center text-7xl glitch-layer pointer-events-none"
+                aria-hidden="true"
+              >
+                <span className="text-[var(--color-crt-glow)] font-title opacity-50">
+                  bartch.io
+                </span>
+              </div> */}
+
+          {/* Normal content */}
+          <div className="drop-shadow-[0_0_8px_var(--color-crt-glow)] relative z-20 h-full flex flex-col items-center mt-20 sm:mt-30 px-5">
+            <Navigation />
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );

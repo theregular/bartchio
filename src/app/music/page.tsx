@@ -1,13 +1,13 @@
 import TypedASCII from "../components/TypedASCII";
 
-export default function Dev() {
+export default function Music() {
   return (
     <div className="flex flex-col items-center h-full">
-      <div className="text-[0.65rem] sm:text-xs">
-        <TypedASCII ascii="computer" />
+      <div className="text-sm sm:text-lg">
+        <TypedASCII ascii="vinyl" />
       </div>
       <br />
-      dev goes here
+      music goes here
     </div>
   );
 }

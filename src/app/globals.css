@@ -28,7 +28,7 @@
       background-position: 0 0;
     }
     100% {
-      background-position: 0 6px;
+      background-position: 0 8px;
     } /* move by one full scanline */
   }
 
@@ -39,11 +39,11 @@
     background-image: repeating-linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.15) 0px,
-      rgba(0, 0, 0, 0.15) 3px,
-      transparent 3px,
-      transparent 6px
+      rgba(0, 0, 0, 0.15) 4px,
+      transparent 4px,
+      transparent 8px
     );
-    background-size: 100% 6px; /* explicitly define the pattern size */
+    background-size: 100% 8px; /* explicitly define the pattern size */
     animation: crt-scanline-scroll 0.2s linear infinite;
     z-index: 10;
     pointer-events: none;
@@ -109,7 +109,8 @@
     background-image: url("/noisy.png");
     opacity: 20%;
     z-index: 0;
-    animation: shift1 1s linear infinite both;
+    animation: shift1 2s linear infinite both;
+    pointer-events: none;
   }
 
   .fuzzy-overlay2 {
@@ -118,6 +119,27 @@
     background-image: url("/noisy.png");
     opacity: 20%;
     z-index: 0;
-    animation: shift2 1s linear infinite both;
+    animation: shift2 2s linear infinite both;
+    pointer-events: none;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .blink-cursor {
+    display: inline-block;
+    width: 0.6ch;
+    height: 1em;
+    background-color: currentColor;
+    margin-left: 1px;
+    vertical-align: bottom;
+    animation: blink 1s steps(1) infinite;
   }
 }
