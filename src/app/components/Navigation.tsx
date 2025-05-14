@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import TypedText from "./TypedText";
 import { HoverLink } from "./HoverLink";
 import { usePathname } from "next/navigation";

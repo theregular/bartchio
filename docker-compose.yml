@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .          # Build from the current directory
+      dockerfile: Dockerfile
+    container_name: bartchio
+    ports:
+      - "3000:3000"       # Expose container port 3000 on host
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    restart: unless-stopped
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    depends_on:
+      - web
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+    restart: unless-stopped

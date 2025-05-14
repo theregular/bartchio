@@ -1,5 +1,3 @@
-import TypedASCII from "./components/TypedASCII";
-
 export default function Home() {
   return (
     <div>
